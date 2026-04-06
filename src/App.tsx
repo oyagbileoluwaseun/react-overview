@@ -2,7 +2,7 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
-import './App.css'
+// import './App.css'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
