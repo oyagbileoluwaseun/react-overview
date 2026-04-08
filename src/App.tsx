@@ -3,8 +3,9 @@
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
 // import './App.css'
-//import DataFetch from './components/data/DataFetch'
-import DataFetch2 from './components/data/DataFetch2'
+// import DataFetch from './components/data/DataFetch'
+// import DataFetch2 from './components/data/DataFetch2'
+import SearchData from './components/data/SearchData'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     <div>
       <ReactPortals />
       {/* <DataFetch /> */}
-      <DataFetch2 />
+      {/* {<DataFetch2 />} */}
+      <SearchData />
     </div>
   )
 }
