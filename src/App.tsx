@@ -3,7 +3,8 @@
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
 // import './App.css'
-import DataFetch from './components/data/DataFetch'
+//import DataFetch from './components/data/DataFetch'
+import DataFetch2 from './components/data/DataFetch2'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
   return (
     <div>
       <ReactPortals />
-      <DataFetch />
+      {/* <DataFetch /> */}
+      <DataFetch2 />
     </div>
   )
 }
