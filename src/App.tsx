@@ -3,6 +3,7 @@
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
 // import './App.css'
+import DataFetch from './components/data/DataFetch'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <div>
       <ReactPortals />
+      <DataFetch />
     </div>
   )
 }
