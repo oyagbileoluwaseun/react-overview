@@ -6,6 +6,7 @@
 // import DataFetch from './components/data/DataFetch'
 // import DataFetch2 from './components/data/DataFetch2'
 import SearchData from './components/data/SearchData'
+// import UseRef from './components/data/UseRef'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       {/* <DataFetch /> */}
       {/* {<DataFetch2 />} */}
       <SearchData />
+      {/* <UseRef /> */}
     </div>
   )
 }

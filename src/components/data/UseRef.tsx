@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import SearchBar from "../search/SearchBar";
 import CategoryFilter from "../search/CategoryFilter";
 import ProductList from "../List/ProductList";
-import { fetchProductsByCategory, searchProducts } from "../../services/api";
 
 type Product = {
   id: number;
@@ -13,14 +12,16 @@ type Product = {
   thumbnail: string;
   discountPercentage: number;
 };
+const PRODUCTS_SEARCH_API_URL = "https://dummyjson.com/products";
 
-
-function SearchData() {
+function UseRef() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [category, setCategory] = useState<string>("smartphones");
   const [search, setSearch] = useState<string>("");
+  const previousSearch = useRef<string>("");
+  const isFirstRender = useRef<boolean>(true);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,16 +30,24 @@ function SearchData() {
     async function fetchProducts(): Promise<void> {
         setLoading(true);
         setError("");
+        previousSearch.current = search;
 
         try { 
-            let data;
+            let url = "";
 
             if (search.trim()) {
-                data = await searchProducts(search, signal);
+                url = `${PRODUCTS_SEARCH_API_URL}/search?q=${encodeURIComponent(search)}`;
             } else {
-                data = await fetchProductsByCategory(category, signal);
+                url = `${PRODUCTS_SEARCH_API_URL}/category/${category}`;
             }
 
+            const response = await fetch(url, { signal });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
             setProducts(data.products);
         } catch (err: any) {
             if (err.name !== "AbortError") {
@@ -48,6 +57,11 @@ function SearchData() {
         setLoading(false);
         }
     }
+      if (isFirstRender.current) {
+    isFirstRender.current = false;
+    return;
+    } 
+    console.log("Search changed:", search);
 
     fetchProducts();
 
@@ -55,7 +69,7 @@ function SearchData() {
         controller.abort();
     };
 
-  }, [category, search]);
+  }, [search]);
 
 
   return (
@@ -81,4 +95,4 @@ function SearchData() {
   );
 }
 
-export default SearchData;
+export default UseRef;
