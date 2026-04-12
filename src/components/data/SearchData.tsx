@@ -1,62 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBar from "../search/SearchBar";
 import CategoryFilter from "../search/CategoryFilter";
 import ProductList from "../List/ProductList";
-import { fetchProductsByCategory, searchProducts } from "../../services/api";
+import useProducts from "../../hooks/useProducts";
 
-type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  rating: number;
-  thumbnail: string;
-  discountPercentage: number;
-};
+
 
 
 function SearchData() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [category, setCategory] = useState<string>("smartphones");
   const [search, setSearch] = useState<string>("");
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    async function fetchProducts(): Promise<void> {
-        setLoading(true);
-        setError("");
-
-        try { 
-            let data;
-
-            if (search.trim()) {
-                data = await searchProducts(search, signal);
-            } else {
-                data = await fetchProductsByCategory(category, signal);
-            }
-
-            setProducts(data.products);
-        } catch (err: any) {
-            if (err.name !== "AbortError") {
-            setError((err as Error).message || "An error occurred while fetching products.");
-        } 
-    } finally {
-        setLoading(false);
-        }
-    }
-
-    fetchProducts();
-
-    return () => {
-        controller.abort();
-    };
-
-  }, [category, search]);
-
+  const { products, loading, error } = useProducts(category, search);
+  
 
   return (
     <main style={{ padding: "24px", fontFamily: "Arial, sans-serif" }}>
