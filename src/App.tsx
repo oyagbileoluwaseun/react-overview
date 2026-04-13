@@ -5,8 +5,10 @@
 // import './App.css'
 // import DataFetch from './components/data/DataFetch'
 // import DataFetch2 from './components/data/DataFetch2'
-import SearchData from './components/data/SearchData'
+// import DataFetch3 from './components/data/DataFetch3'
+// import SearchData from './components/data/SearchData'
 // import UseRef from './components/data/UseRef'
+import DataFetchAxios from './components/data/DataFetchAxios'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -17,8 +19,10 @@ function App() {
       <ReactPortals />
       {/* <DataFetch /> */}
       {/* {<DataFetch2 />} */}
-      <SearchData />
+      {/* <SearchData /> */}
+      {/* <DataFetch3 /> */}
       {/* <UseRef /> */}
+      <DataFetchAxios />
     </div>
   )
 }
