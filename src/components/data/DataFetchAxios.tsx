@@ -22,7 +22,7 @@ function DataFetchAxios() {
 
     return ( 
     <main style={{ padding: "24px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Products Explorer {category}</h1>
+      <h1>Products Explorer: {category}</h1>
       <h4>Searching for: {search}</h4>
 
         {/* Search Input */}
