@@ -9,7 +9,8 @@
 // import SearchData from './components/data/SearchData'
 // import UseRef from './components/data/UseRef'
 // import DataFetchAxios from './components/data/DataFetchAxios'
-import DataPaginated from './components/data/DataPaginated'
+// import DataPaginated from './components/data/DataPaginated'
+import MyApp from './components/main/MyApp'
 import ReactPortals from './components/main/ReactPortals'
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
       {/* <DataFetch3 /> */}
       {/* <UseRef /> */}
       {/* <DataFetchAxios /> */}
-      <DataPaginated />
+      <MyApp />
     </div>
   )
 }
