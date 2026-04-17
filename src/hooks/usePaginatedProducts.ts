@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProductsByCategory, searchProducts } from "../services/apiPaginated";
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 6;
 
 function usePaginatedProducts(category: string, search: string) {
     const [products, setProducts] = useState<any[]>([]);
