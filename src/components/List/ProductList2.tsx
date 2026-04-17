@@ -1,8 +1,21 @@
-import ProductCard from "../card/ProductCard";
+import ProductCard1 from "../../feature/productCard/ProductCard1";
 import EmptyState from "../../feature/state/EmptyState";
 
 
-function ProductList2 ({ products, search, category }: { products: { id: number; title: string; description: string; price: number; rating: number; thumbnail: string; discountPercentage: number }[]; search: string; category: string }) {
+function ProductList2 ({ products, search, category, onSelectProduct }: { products: { 
+    id: number; 
+    title: string; 
+    description: string; 
+    price: number; 
+    rating: number; 
+    thumbnail: string; 
+    discountPercentage: number;
+    brand: string;
+    category: string;
+    stock: number }[]; 
+    search: string; 
+    category: string;
+    onSelectProduct: (product: any) => void }) {
   if (products.length === 0) {
     return <EmptyState search={search} category={category} />;
   }
@@ -16,7 +29,7 @@ function ProductList2 ({ products, search, category }: { products: { id: number;
         }}
         >
             {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard1 key={product.id} product={product} onSelect={onSelectProduct} />
             ))}
         </div>
     );

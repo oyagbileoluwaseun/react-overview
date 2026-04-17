@@ -1,4 +1,5 @@
-function ProductCard({product}: {product: any}) {
+function ProductCard1({product, onSelect}: {product: { title: string; description: string; price: number; rating: number; thumbnail: string; discountPercentage: number; brand: string; category: string; stock: number }, 
+    onSelect: (product: { title: string; description: string; price: number; rating: number; thumbnail: string; discountPercentage: number; brand: string; category: string; stock: number }) => void }) {
     const {
         title,
         description,
@@ -16,6 +17,7 @@ function ProductCard({product}: {product: any}) {
 
     return (
         <article
+            onClick={() => onSelect(product)}
             style={{
                 border: "1px solid #ddd",
                 borderRadius: "8px",
@@ -42,7 +44,8 @@ function ProductCard({product}: {product: any}) {
                 <h2 style={{ 
                     fontSize: "18px",
                     margin: "0 0 8px 0",
-                    lineHeight: "1.3",}}
+                    lineHeight: "1.3",
+                    color: "#6b6b6b",}}
                     >
                     {title}
                 </h2>
@@ -102,4 +105,4 @@ function ProductCard({product}: {product: any}) {
     );
 }
 
-export default ProductCard;
+export default ProductCard1;
